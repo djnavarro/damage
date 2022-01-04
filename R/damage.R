@@ -1,12 +1,13 @@
 
 #' Generate damage art
 #'
-#' @param seed
-#' @param filename
+#' @param seed integer seed specifying piece number
+#' @param filename file to save the output to
+#' @param pixels resolution
 #'
 #' @return art
 #' @export
-damage <- function(seed, filename = NULL) {
+damage <- function(seed, filename, pixels = 3000) {
 
   set.seed(seed)
 
@@ -24,10 +25,6 @@ damage <- function(seed, filename = NULL) {
 
   pic <- construct_damage(seed, palette, background, trajectory, orientation,
                           spiral, breaks, linetype, lineend, size)
-
-  if(is.null(filename)) {
-    filename <- paste0("~/Desktop/damage_", seed, ".png")
-  }
 
   npix <- 3000
   ggplot2::ggsave(
