@@ -25,7 +25,7 @@ theme_faint <- function(palette, ...) {
 
   bg <- palette %>%
     sample(size = 1) %>%
-    colorspace::lighten(amount = .95)
+    colorspace::lighten(amount = .9)
 
   ggplot2::theme_void() +
     ggplot2::theme(

@@ -10,7 +10,7 @@ damage <- function(seed, filename = NULL) {
 
   set.seed(seed)
 
-  seeds <- sample(1:1000, 8)
+  seeds <- sample(1:1000, 9)
 
   palette     <- select_palette(seeds[1])
   background  <- select_background(seeds[2])
@@ -20,9 +20,10 @@ damage <- function(seed, filename = NULL) {
   breaks      <- select_breaks(seeds[6])
   linetype    <- select_linetype(seeds[7])
   lineend     <- select_lineend(seeds[8])
+  size        <- select_size(seeds[9])
 
-  pic <- construct_damage(palette, background, trajectory, orientation,
-                          spiral, breaks, linetype, lineend)
+  pic <- construct_damage(seed, palette, background, trajectory, orientation,
+                          spiral, breaks, linetype, lineend, size)
 
   if(is.null(filename)) {
     filename <- paste0("~/Desktop/damage_", seed, ".png")
@@ -38,8 +39,8 @@ damage <- function(seed, filename = NULL) {
   )
 }
 
-construct_damage <- function(palette, background, trajectory, orientation,
-                             spiral, breaks, linetype, lineend) {
+construct_damage <- function(seed, palette, background, trajectory, orientation,
+                             spiral, breaks, linetype, lineend, size) {
   set.seed(1)
   trajectory %>%
     ggplot2::ggplot(ggplot2::aes(
@@ -48,7 +49,7 @@ construct_damage <- function(palette, background, trajectory, orientation,
       xend = x0,
       yend = spiral(y1),
       colour = cut_shades(shade, length(palette)),
-      size = sz
+      size = size(sz)
     )) +
     ggplot2::geom_path(
       show.legend = FALSE,
