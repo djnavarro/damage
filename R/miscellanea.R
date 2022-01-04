@@ -6,19 +6,10 @@ select_orientation <- function(seed) {
   return(orientation)
 }
 
-select_breaks <- function(seed) {
+select_lineend <- function(seed) {
   set.seed(seed)
-  n <- sample(1:20, 1)
-  force(n)
-  function(x) {
-    seq(
-      from = x[1],
-      to = x[2],
-      length.out = n
-    )
-  }
+  sample(c("butt", "round", "square"), 1)
 }
-
 
 select_linetype <- function(seed) {
 
