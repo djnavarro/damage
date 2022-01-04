@@ -7,7 +7,7 @@
 #'
 #' @return art
 #' @export
-damage <- function(seed, filename, pixels = 3000) {
+damage <- function(seed, filename = NULL, pixels = 3000) {
 
   set.seed(seed)
 
@@ -26,14 +26,17 @@ damage <- function(seed, filename, pixels = 3000) {
   pic <- construct_damage(seed, palette, background, trajectory, orientation,
                           spiral, breaks, linetype, lineend, size)
 
-  npix <- 3000
-  ggplot2::ggsave(
-    filename = filename,
-    plot = pic,
-    width = npix/300,
-    height = npix/300,
-    dpi = 300
-  )
+  if(!is.null(filename)) {
+    ggplot2::ggsave(
+      filename = filename,
+      plot = pic,
+      width = pixels/300,
+      height = pixels/300,
+      dpi = 300
+    )
+    return(invisible(pic))
+  }
+  return(pic)
 }
 
 construct_damage <- function(seed, palette, background, trajectory, orientation,

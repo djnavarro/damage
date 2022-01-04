@@ -18,5 +18,20 @@ remotes::install_github("djnavarro/damage")
 To generate pieces:
 
 ``` r
-damage::damage(seed = 1, filename = "damage_1.png")
+library(damage)
+damage(seed = 11)
 ```
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
+``` r
+damage(seed = 12)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
+
+``` r
+damage(seed = 13)
+```
+
+<img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />
