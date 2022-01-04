@@ -1,0 +1,26 @@
+Package: damage
+Title: Create Generative Art
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Danielle",
+           family = "Navarro",
+           role = c("aut", "cre"),
+           email = "djnavarro@protonmail.com",
+           comment = c(ORCID = "0000-0001-7648-6578"))
+Description: Generative art.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    colorspace,
+    dplyr,
+    ggplot2,
+    magrittr,
+    Rcpp,
+    scales
+LinkingTo: 
+    Rcpp
+Depends: 
+    R (>= 2.10)
