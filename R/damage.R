@@ -54,12 +54,14 @@ construct_damage <- function(palette, background, trajectory, orientation,
     ggplot2::scale_color_gradientn(colours = palette) +
     ggplot2::scale_size_identity() +
     ggplot2::scale_y_continuous(
-      limits = radial_limits(trajectory$y0),
+      limits = radial_limits(spiral(trajectory$y0)), # <- ugly hack
       expand = c(0, 0),
       breaks = breaks,
       oob = scales::oob_keep
     ) +
     ggplot2::scale_x_continuous(
+      expand = c(0, 0),
+      limits = exact_limits(trajectory$x0),
       breaks = breaks
     )
 }
