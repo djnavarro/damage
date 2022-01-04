@@ -6,7 +6,7 @@ select_trajectory <- function(seed) {
   iterations <- sample(
     x = c(10^4, 10^5, 10^6),
     size = 1,
-    prob = c(.1, .2, .7)
+    prob = c(.2, .2, .6)
   )
 
   dat <- damage_path(iter = iterations)
@@ -15,8 +15,6 @@ select_trajectory <- function(seed) {
   dat %>%
     as.data.frame() %>%
     dplyr::mutate(
-      y0 = spiral_out(y0),
-      y1 = spiral_out(y1),
       sz = set_sizes(dplyr::n())
     )
 }

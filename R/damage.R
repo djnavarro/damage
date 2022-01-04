@@ -10,7 +10,7 @@ damage <- function(seed, filename = NULL) {
 
   set.seed(seed)
 
-  seeds <- sample(1:1000, 6)
+  seeds <- sample(1:1000, 7)
 
   palette     <- select_palette(seeds[1])
   background  <- select_background(seeds[2])
@@ -18,9 +18,10 @@ damage <- function(seed, filename = NULL) {
   orientation <- select_orientation(seeds[4])
   spiral      <- select_spiral(seeds[5])
   breaks      <- select_breaks(seeds[6])
+  linetype    <- select_linetype(seeds[7])
 
   pic <- construct_damage(palette, background, trajectory, orientation,
-                          spiral, breaks)
+                          spiral, breaks, linetype)
 
   if(is.null(filename)) {
     filename <- paste0("~/Desktop/damage_", seed, ".png")
@@ -37,7 +38,7 @@ damage <- function(seed, filename = NULL) {
 }
 
 construct_damage <- function(palette, background, trajectory, orientation,
-                             spiral, breaks) {
+                             spiral, breaks, linetype) {
   set.seed(1)
   trajectory %>%
     ggplot2::ggplot(ggplot2::aes(
@@ -50,18 +51,21 @@ construct_damage <- function(palette, background, trajectory, orientation,
     )) +
     ggplot2::geom_path(show.legend = FALSE) +
     ggplot2::coord_polar(start = orientation, clip = "off") +
-    background(palette) +
+    background(
+      palette = palette,
+      linetype = linetype
+    ) +
     ggplot2::scale_color_gradientn(colours = palette) +
     ggplot2::scale_size_identity() +
     ggplot2::scale_y_continuous(
-      limits = radial_limits(spiral(trajectory$y0)), # <- ugly hack
+      limits = y_limits(spiral(trajectory$y0)), # <- ugly hack
       expand = c(0, 0),
       breaks = breaks,
       oob = scales::oob_keep
     ) +
     ggplot2::scale_x_continuous(
       expand = c(0, 0),
-      limits = exact_limits(trajectory$x0),
+      limits = x_limits(trajectory$x0),
       breaks = breaks
     )
 }

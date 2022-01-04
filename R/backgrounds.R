@@ -36,7 +36,7 @@ theme_faint <- function(palette, ...) {
     )
 }
 
-theme_contour <- function(...) {
+theme_contour <- function(linetype, ...) {
   ggplot2::theme_void() +
     ggplot2::theme(
       panel.background = ggplot2::element_rect(
@@ -45,12 +45,13 @@ theme_contour <- function(...) {
       ),
       panel.grid.major.y = ggplot2::element_line(
         colour = "grey50",
-        size = .1
+        size = .2,
+        linetype = linetype
       )
     )
 }
 
-theme_spoke <- function(...) {
+theme_spoke <- function(linetype, ...) {
   ggplot2::theme_void() +
     ggplot2::theme(
       panel.background = ggplot2::element_rect(
@@ -59,7 +60,8 @@ theme_spoke <- function(...) {
       ),
       panel.grid.major.x = ggplot2::element_line(
         colour = "grey50",
-        size = .1
+        size = .2,
+        linetype = linetype
       )
     )
 }
