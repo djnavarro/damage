@@ -16,7 +16,7 @@ spiral_none <- function(x) {
 
 spiral_lumpy <- function(x) {
   n <- length(x)
-  increment <- sort(runif(n))
+  increment <- sort(stats::runif(n))
   x + sqrt(increment)
 }
 

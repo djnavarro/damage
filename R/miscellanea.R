@@ -1,7 +1,7 @@
 
 select_orientation <- function(seed) {
   set.seed(seed)
-  orientation <- runif(1, min = 0, max = 2*pi)
+  orientation <- stats::runif(1, min = 0, max = 2*pi)
   force(orientation)
   return(orientation)
 }
@@ -34,3 +34,4 @@ x_limits <- function(x) {
   c(min(x), max(x))
 }
 
+utils::globalVariables(c("shade", "sz", "x0", "y0", "y1", "colores"))

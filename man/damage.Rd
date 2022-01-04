@@ -4,10 +4,14 @@
 \alias{damage}
 \title{Generate damage art}
 \usage{
-damage(seed)
+damage(seed, filename, pixels = 3000)
 }
 \arguments{
-\item{seed}{}
+\item{seed}{integer seed specifying piece number}
+
+\item{filename}{file to save the output to}
+
+\item{pixels}{resolution}
 }
 \value{
 art

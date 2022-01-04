@@ -21,7 +21,7 @@ even_breaks <- function() {
 
 uneven_breaks <- function() {
   function(x) {
-    sort(runif(
+    sort(stats::runif(
       n = sample(1:20, 1),
       min = x[1],
       max = x[2]

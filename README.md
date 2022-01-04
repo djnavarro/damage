@@ -4,6 +4,8 @@
 # damage
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/djnavarro/damage/workflows/R-CMD-check/badge.svg)](https://github.com/djnavarro/damage/actions)
 <!-- badges: end -->
 
 The goal of damage is to make generative art. You can install the

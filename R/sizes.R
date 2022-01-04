@@ -28,7 +28,7 @@ size_sparse <- function(sz) {
 
 
 size_smooth <- function(sz) {
-  sz <- rnorm(length(sz), 0, .1)
+  sz <- stats::rnorm(length(sz), 0, .1)
   sz <- cumsum(sz)
   sz <- sz - min(sz)
   sz <- sz / max(sz)
