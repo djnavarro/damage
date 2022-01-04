@@ -1,0 +1,11 @@
+url: https://damage.djnavarro.net
+
+home:
+  title: Damage
+  description: Generative art pacakge for R
+
+template:
+  bootstrap: 5
+  includes:
+    in_header:
+      <script async defer data-domain="damage.djnavarro.net" src="https://plausible.io/js/plausible.js"></script>
