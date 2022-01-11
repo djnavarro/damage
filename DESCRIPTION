@@ -1,6 +1,6 @@
 Package: damage
 Title: Create Generative Art
-Version: 0.1
+Version: 0.1.9000
 Authors@R: 
     person(given = "Danielle",
            family = "Navarro",
