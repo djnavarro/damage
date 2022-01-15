@@ -2,7 +2,7 @@ select_size <- function(seed) {
   sizes <- list(
     size_original,
     size_sparse,
-    size_smooth
+    size_chonk
   )
   size <- sample(sizes, 1)[[1]]
   return(size)
@@ -27,11 +27,13 @@ size_sparse <- function(sz) {
 }
 
 
-size_smooth <- function(sz) {
-  sz <- stats::rnorm(length(sz), 0, .1)
-  sz <- cumsum(sz)
-  sz <- sz - min(sz)
-  sz <- sz / max(sz)
+size_chonk <- function(sz) {
+  sz <- sample(
+    x = c(0, .1, .1, 3),
+    prob = c(.5, .47, .02, .01),
+    size = length(sz),
+    replace = TRUE
+  )
   return(sz)
 }
 
