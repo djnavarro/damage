@@ -11,17 +11,29 @@ select_spiral <- function(seed) {
 }
 
 spiral_none <- function(x) {
-  x
+  normalise(x)
 }
 
 spiral_lumpy <- function(x) {
   n <- length(x)
   increment <- sort(stats::runif(n))
-  x + sqrt(increment)
+  x <- x + sqrt(increment)
+  normalise(x)
 }
 
 spiral_smooth <- function(x) {
   n <- length(x)
   increment <- seq(0, 1, length.out = n)
-  x + sqrt(increment)
+  x <- x + sqrt(increment)
+  normalise(x)
+}
+
+
+normalise <- function (x, from = range(x), to = c(0, 1))
+{
+  x <- (x - from[1])/(from[2] - from[1])
+  if (!identical(to, c(0, 1))) {
+    x <- x * (to[2] - to[1]) + to[1]
+  }
+  x
 }
