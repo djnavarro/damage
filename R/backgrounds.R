@@ -5,7 +5,8 @@ select_background <- function(seed) {
     theme_white,
     theme_faint,
     theme_contour,
-    theme_spoke
+    theme_spoke,
+    theme_contour_dark
   )
   ind <- sample(1:length(themes), 1)
   return(themes[[ind]])
@@ -50,6 +51,27 @@ theme_contour <- function(linetype, ...) {
       )
     )
 }
+
+theme_contour_dark <- function(palette, linetype, ...) {
+
+  bg <- palette %>%
+    sample(size = 1) %>%
+    colorspace::darken(amount = .9)
+
+  ggplot2::theme_void() +
+    ggplot2::theme(
+      panel.background = ggplot2::element_rect(
+        fill = bg,
+        colour = bg
+      ),
+      panel.grid.major.y = ggplot2::element_line(
+        colour = "white",
+        size = .1,
+        linetype = linetype
+      )
+    )
+}
+
 
 theme_spoke <- function(linetype, ...) {
   ggplot2::theme_void() +
