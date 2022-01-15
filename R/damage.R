@@ -46,7 +46,7 @@ construct_damage <- function(seed, palette, background, trajectory, orientation,
     ggplot2::ggplot(ggplot2::aes(
       x = x0,
       y = spiral(y0),
-      xend = x0,
+      xend = x1,
       yend = spiral(y1),
       colour = cut_shades(shade, length(palette)),
       size = size(sz)
