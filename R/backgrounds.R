@@ -5,7 +5,7 @@ select_background <- function(seed) {
     theme_white,
     theme_faint,
     theme_contour,
-    theme_spoke,
+    #theme_spoke,
     theme_contour_dark
   )
   ind <- sample(1:length(themes), 1)
@@ -27,6 +27,12 @@ theme_faint <- function(palette, ...) {
   bg <- palette %>%
     sample(size = 1) %>%
     colorspace::lighten(amount = .9)
+
+  # bail if too low contrast
+  contrast <- colorspace::contrast_ratio(palette, bg)
+  if(max(contrast) < 3) {
+    bg <- "black"
+  }
 
   ggplot2::theme_void() +
     ggplot2::theme(
@@ -58,6 +64,12 @@ theme_contour_dark <- function(palette, linetype, ...) {
     sample(size = 1) %>%
     colorspace::darken(amount = .9)
 
+  # bail if too low contrast
+  contrast <- colorspace::contrast_ratio(palette, bg)
+  if(max(contrast) < 3) {
+    bg <- "white"
+  }
+
   ggplot2::theme_void() +
     ggplot2::theme(
       panel.background = ggplot2::element_rect(
@@ -65,7 +77,7 @@ theme_contour_dark <- function(palette, linetype, ...) {
         colour = bg
       ),
       panel.grid.major.y = ggplot2::element_line(
-        colour = "white",
+        colour = "#ffffff66",
         size = .1,
         linetype = linetype
       )
@@ -73,20 +85,20 @@ theme_contour_dark <- function(palette, linetype, ...) {
 }
 
 
-theme_spoke <- function(linetype, ...) {
-  ggplot2::theme_void() +
-    ggplot2::theme(
-      panel.background = ggplot2::element_rect(
-        fill = "white",
-        colour = "white"
-      ),
-      panel.grid.major.x = ggplot2::element_line(
-        colour = "grey50",
-        size = .2,
-        linetype = linetype
-      )
-    )
-}
+# theme_spoke <- function(linetype, ...) {
+#   ggplot2::theme_void() +
+#     ggplot2::theme(
+#       panel.background = ggplot2::element_rect(
+#         fill = "white",
+#         colour = "white"
+#       ),
+#       panel.grid.major.x = ggplot2::element_line(
+#         colour = "grey50",
+#         size = .2,
+#         linetype = linetype
+#       )
+#     )
+# }
 
 
 

@@ -15,7 +15,6 @@ damage <- function(seed, filename = NULL, pixels = 3000) {
 
   palette     <- select_palette(seeds[1])
   background  <- select_background(seeds[2])
-  trajectory  <- select_trajectory(seeds[3])
   orientation <- select_orientation(seeds[4])
   spiral      <- select_spiral(seeds[5])
   breaks      <- select_breaks(seeds[6])
@@ -23,8 +22,10 @@ damage <- function(seed, filename = NULL, pixels = 3000) {
   lineend     <- select_lineend(seeds[8])
   size        <- select_size(seeds[9])
 
+  trajectory  <- select_trajectory(seeds[3], spiral, size)
+
   pic <- construct_damage(seed, palette, background, trajectory, orientation,
-                          spiral, breaks, linetype, lineend, size)
+                          breaks, linetype, lineend)
 
   if(!is.null(filename)) {
     ggplot2::ggsave(
@@ -40,18 +41,19 @@ damage <- function(seed, filename = NULL, pixels = 3000) {
 }
 
 construct_damage <- function(seed, palette, background, trajectory, orientation,
-                             spiral, breaks, linetype, lineend, size) {
+                             breaks, linetype, lineend) {
   set.seed(1)
+
   trajectory %>%
     ggplot2::ggplot(ggplot2::aes(
       x = x0,
-      y = spiral(y0),
+      y = y0,
       xend = x1,
-      yend = spiral(y1),
-      colour = cut_shades(shade, length(palette)),
-      size = size(sz)
+      yend = y1,
+      colour = shade,
+      size = sz
     )) +
-    ggplot2::geom_path(
+    ggplot2::geom_segment(
       show.legend = FALSE,
       lineend = lineend
     ) +
@@ -61,16 +63,14 @@ construct_damage <- function(seed, palette, background, trajectory, orientation,
       linetype = linetype
     ) +
     ggplot2::scale_color_gradientn(colours = palette) +
-    ggplot2::scale_size_identity() +
+    #ggplot2::scale_size_identity() +
     ggplot2::scale_y_continuous(
-      limits = y_limits(spiral(trajectory$y0)), # <- ugly hack
       expand = c(0, 0),
       breaks = breaks,
       oob = scales::oob_keep
     ) +
     ggplot2::scale_x_continuous(
       expand = c(0, 0),
-      limits = x_limits(trajectory$x0),
       breaks = breaks
     )
 }

@@ -11,7 +11,7 @@ select_size <- function(seed) {
 size_original <- function(sz) {
   sample(
     x = c(0, .1, .5, 2),
-    prob = c(.5, .47, .02, .01),
+    prob = c(.97, .02, .01, .01),
     size = length(sz),
     replace = TRUE
   )
@@ -19,8 +19,8 @@ size_original <- function(sz) {
 
 size_sparse <- function(sz) {
   sample(
-    x = c(0, 0, .5, 2),
-    prob = c(.5, .47, .02, .01),
+    x = c(0, .5, 2),
+    prob = c(.97, .02, .01),
     size = length(sz),
     replace = TRUE
   )
@@ -29,8 +29,8 @@ size_sparse <- function(sz) {
 
 size_chonk <- function(sz) {
   sz <- sample(
-    x = c(0, .1, .1, 3),
-    prob = c(.5, .47, .02, .01),
+    x = c(0, .1, 3),
+    prob = c(.97, .02, .01),
     size = length(sz),
     replace = TRUE
   )
