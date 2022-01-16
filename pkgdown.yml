@@ -1,8 +1,8 @@
 pandoc: 2.7.3
-pkgdown: 2.0.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-01-04T10:53Z
+last_built: 2022-01-16T06:54Z
 urls:
   reference: http://damage.djnavarro.net/reference
   article: http://damage.djnavarro.net/articles
