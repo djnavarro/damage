@@ -4,7 +4,7 @@
 \alias{damage}
 \title{Generate damage art}
 \usage{
-damage(seed, filename, pixels = 3000)
+damage(seed, filename = NULL, pixels = 3000)
 }
 \arguments{
 \item{seed}{integer seed specifying piece number}
