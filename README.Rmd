@@ -25,11 +25,11 @@ The goal of damage is to make generative art. You can install the development ve
 remotes::install_github("djnavarro/damage")
 ```
 
-To generate pieces:
+The particular conceit of this system is that every release of the system generates pieces in a slightly different style (i.e., the output is different depending on which version of the package you have installed). This is version 0.3. To generate pieces:
 
 ```{r, fig.height=10, fig.width=10, dpi=300}
 library(damage)
-damage(seed = 11)
-damage(seed = 12)
-damage(seed = 13)
+damage(seed = 1)
+damage(seed = 2)
+damage(seed = 3)
 ```

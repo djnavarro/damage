@@ -15,23 +15,26 @@ development version from [GitHub](https://github.com/) with:
 remotes::install_github("djnavarro/damage")
 ```
 
-To generate pieces:
+The particular conceit of this system is that every release of the
+system generates pieces in a slightly different style (i.e., the output
+is different depending on which version of the package you have
+installed). This is version 0.3. To generate pieces:
 
 ``` r
 library(damage)
-damage(seed = 11)
+damage(seed = 1)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
 ``` r
-damage(seed = 12)
+damage(seed = 2)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
 
 ``` r
-damage(seed = 13)
+damage(seed = 3)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />
